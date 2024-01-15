@@ -1,9 +1,9 @@
 const getTodayDate = () => {
     let today = new Date()
     const dd = String(today.getDate() + 1).padStart(2, '0')
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0')
     const yyyy = today.getFullYear()
-    today = mm + '-' + dd + '-' + yyyy;
+    today = mm + '-' + dd + '-' + yyyy
     return new Date(today)
 }
 
@@ -17,14 +17,14 @@ const getStringDate = (today) => {
     const dd = String(today.getDate()).padStart(2, '0')
     const mm = String(today.getMonth() + 1).padStart(2, '0')
     const yyyy = today.getFullYear()
-    today = mm + '-' + dd + '-' + yyyy;
+    today = mm + '-' + dd + '-' + yyyy
     return today
 }
 
 const getNumOfWeeks = (period) => {
-    if(period === "weekly") {
+    if(period === 'weekly') {
         return 1
-    } else if(period === "monthly") {
+    } else if(period === 'monthly') {
         return 4
     } else {
         return 12
@@ -39,10 +39,10 @@ const validCurrency = (currency) => {
 const sumFee = (appointments, isPaid) => {
     const total = appointments.reduce((sum, appointment) => {
         if (appointment.isPaid === isPaid) {
-          sum = sum + appointment.fee;
+            sum = sum + appointment.fee
         }
-        return sum;
-      }, 0);
+        return sum
+    }, 0)
     return total
 }
 
@@ -78,33 +78,33 @@ const getFee = (appointments, requiredCurrency) => {
 }
 
 const getPopularPet = (patients) => {
-    let max = 0;
+    let max = 0
     const popularPet = patients.reduce((acc, patient) => {
-    if (patient.appointments.length > max) {
-      max = patient.appointments.length;
-      acc.id = patient._id;
-      acc.name = patient.name;
-      acc.totalAppointments = max;
-    }
-    return acc;
-  }, {});
+        if (patient.appointments.length > max) {
+            max = patient.appointments.length
+            acc.id = patient._id
+            acc.name = patient.name
+            acc.totalAppointments = max
+        }
+        return acc
+    }, {})
 
-  return popularPet
+    return popularPet
 }
 
 const getEveryPetDetails = (patients) => {
     const petsDetail = patients.reduce((acc, patient) => {
-        const petDetail = {};
-        petDetail.id = patient._id;
-        petDetail.name = patient.name;
+        const petDetail = {}
+        petDetail.id = patient._id
+        petDetail.name = patient.name
         petDetail.totalFeePaid = sumFee(patient.appointments, true)
         petDetail.totalFeeUnPaid = sumFee(patient.appointments, false)
     
-        acc.push(petDetail);
-        return acc;
-      }, []);
+        acc.push(petDetail)
+        return acc
+    }, [])
 
-      return petsDetail
+    return petsDetail
 }
 
 // Exports Here

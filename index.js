@@ -2,8 +2,8 @@ const morgan = require('morgan')
 const Joi = require('joi')
 Joi.objectId = require('joi-objectid')(Joi)
 const express = require('express')
-const colors = require('colors')
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv')
+dotenv.config()
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
 
@@ -24,7 +24,7 @@ app.use('/api/patients', patientRoutes)
 app.use('/api/appointments', appointmentRoutes)
 
 app.get('/', (req, res) => {
-  res.send('App is running...')
+    res.send('App is running...')
 })
 
 // Custom Middlewares
