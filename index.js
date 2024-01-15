@@ -3,6 +3,9 @@ const Joi = require('joi')
 Joi.objectId = require('joi-objectid')(Joi)
 const express = require('express')
 const dotenv = require('dotenv')
+/* eslint-disable-next-line no-unused-vars */
+const colors = require('colors')
+
 dotenv.config()
 const { notFound, errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
