@@ -10,7 +10,7 @@ jobs:
             CI: true
         strategy:
             matrix:
-                node-version: [18.x, 20.x]
+                node-version: [20.x]
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -19,3 +19,29 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm install
+    deploy:
+        needs: build
+        strategy:
+            matrix:
+                node-version: [20.x]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - name: Use Node.js version ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Install Heroku CLI
+              run: |
+                  wget -qO- https://toolbelt.heroku.com/install.sh | sh
+                  heroku --version
+
+            - name: Login to Heroku
+              run: heroku login -i
+
+            - name: Deploy to Heroku
+              run: |
+                  git push https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git HEAD:main
