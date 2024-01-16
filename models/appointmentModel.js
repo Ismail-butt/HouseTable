@@ -14,7 +14,7 @@ const appointmentSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 255
+        maxlength: 255,
     },
     fee: {
         type: Number,
@@ -28,7 +28,7 @@ const appointmentSchema = new mongoose.Schema({
     },
     isPaid: {
         type: Boolean,
-        default: false
+        default: false,
     },
     day: {
         type: String,

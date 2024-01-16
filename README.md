@@ -1,2 +1,3 @@
 # HouseTable
-Welcome to housetable Network Veterinarian Hospital Data API! 
+
+Welcome to housetable Network Veterinarian Hospital Data API!

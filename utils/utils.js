@@ -22,9 +22,9 @@ const getStringDate = (today) => {
 }
 
 const getNumOfWeeks = (period) => {
-    if(period === 'weekly') {
+    if (period === 'weekly') {
         return 1
-    } else if(period === 'monthly') {
+    } else if (period === 'monthly') {
         return 4
     } else {
         return 12
@@ -54,9 +54,9 @@ const getFee = (appointments, requiredCurrency) => {
 
     const fee = {}
     fee.unpaid = appointments.reduce((acc, appointment) => {
-        if(!appointment.isPaid) {
-            if(appointment.currency !== requiredCurrency) {
-                acc =  acc + (appointment.fee * currencyConversion[appointment.currency])
+        if (!appointment.isPaid) {
+            if (appointment.currency !== requiredCurrency) {
+                acc = acc + appointment.fee * currencyConversion[appointment.currency]
             } else {
                 acc = acc + appointment.fee
             }
@@ -64,9 +64,9 @@ const getFee = (appointments, requiredCurrency) => {
         return acc
     }, 0)
     fee.paid = appointments.reduce((acc, appointment) => {
-        if(appointment.isPaid) {
-            if(appointment.currency !== requiredCurrency) {
-                acc =  acc + (appointment.fee * currencyConversion[appointment.currency])
+        if (appointment.isPaid) {
+            if (appointment.currency !== requiredCurrency) {
+                acc = acc + appointment.fee * currencyConversion[appointment.currency]
             } else {
                 acc = acc + appointment.fee
             }
@@ -99,7 +99,7 @@ const getEveryPetDetails = (patients) => {
         petDetail.name = patient.name
         petDetail.totalFeePaid = sumFee(patient.appointments, true)
         petDetail.totalFeeUnPaid = sumFee(patient.appointments, false)
-    
+
         acc.push(petDetail)
         return acc
     }, [])

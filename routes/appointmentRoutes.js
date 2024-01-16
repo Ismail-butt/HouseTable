@@ -13,11 +13,7 @@ const {
 router.route('/').get(getAppointments).post(createAppointment)
 router.route('/findAll').get(findAllAppointments)
 router.route('/remainingBill').get(getRemainingBill)
-router
-    .route('/:id')
-    .get(getAppointmentById)
-    .delete(deleteAppointment)
-    .put(updateAppointment)
+router.route('/:id').get(getAppointmentById).delete(deleteAppointment).put(updateAppointment)
 
 // Export all the routes
 module.exports = router

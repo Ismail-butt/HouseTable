@@ -7,7 +7,7 @@ const patientSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 5,
-        maxlength: 255
+        maxlength: 255,
     },
     type: {
         type: String,
@@ -19,27 +19,27 @@ const patientSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 5,
-        maxlength: 255
+        maxlength: 255,
     },
     ownerAddress: {
         type: String,
         required: true,
         trim: true,
         minlength: 5,
-        maxlength: 255
+        maxlength: 255,
     },
     ownerPhoneNo: {
         type: String,
         required: true,
         trim: true,
         minlength: 5,
-        maxlength: 55
+        maxlength: 55,
     },
     appointments: {
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Appointment',
-        default: []
-    }
+        default: [],
+    },
 })
 
 const Patient = new mongoose.model('Patient', patientSchema)

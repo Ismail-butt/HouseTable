@@ -3,7 +3,7 @@ const { validAppointment } = require('../models/appointmentModel')
 
 const validationHandler = (req, res, next) => {
     const isFound = req.baseUrl.includes('appointments')
-    if(!isFound) {
+    if (!isFound) {
         const { error } = validPatient(req.body)
         if (error) {
             res.status(404)

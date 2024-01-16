@@ -1,10 +1,7 @@
 const asyncHandler = require('express-async-handler')
 const { Patient, validate } = require('../models/patientModel')
 
-const {
-    getPopularPet,
-    getEveryPetDetails,
-} = require('../utils/utils')
+const { getPopularPet, getEveryPetDetails } = require('../utils/utils')
 
 // @desc Get all patients
 // @route GET /api/patients
@@ -44,7 +41,6 @@ const deletePatient = asyncHandler(async (req, res) => {
 // @route POST /api/patients
 // @acess Public
 const createPatient = asyncHandler(async (req, res) => {
-
     const newPatient = new Patient({
         name: req.body.name,
         type: req.body.type,
@@ -78,7 +74,7 @@ const updatePatient = asyncHandler(async (req, res) => {
         },
         {
             new: true,
-        }
+        },
     )
 
     if (!patient) {
