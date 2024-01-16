@@ -27,7 +27,7 @@ app.use('/api/patients', patientRoutes)
 app.use('/api/appointments', appointmentRoutes)
 
 app.get('/', (req, res) => {
-    res.send('App is running...')
+    res.send('App is live :)')
 })
 
 // Custom Middlewares
