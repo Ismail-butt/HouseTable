@@ -39,12 +39,10 @@ jobs:
                   wget -qO- https://toolbelt.heroku.com/install.sh | sh
                   heroku --version
 
-            - name: Login to Heroku
-              run: heroku login -i
-
             - name: Deploy to Heroku
               run: |
-                  git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+                  heroku login -i
+                  git remote add heroku https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}
                   echo "machine git.heroku.com login _ password=${{ secrets.HEROKU_API_KEY }}" > ~/.netrc
 
                   git push heroku HEAD:main
